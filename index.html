@@ -4,36 +4,45 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Nexus Ticketing</title>
-<meta name="description" content="Nexus Ticketing sells tickets for any kind of event and checks them at the door on phones that keep working offline. Pilot opening soon in Zambia. Enquire by email.">
-<meta name="theme-color" content="#0a1630">
+<meta name="description" content="Nexus Ticketing sells tickets for any kind of event and checks them at the door on phones that keep working offline. Pilot opening soon in Zambia. Pre-register by email.">
+<meta name="theme-color" content="#0A1628">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta property="og:title" content="Nexus Ticketing">
 <meta property="og:description" content="Sell the tickets. Scan the gate. Count every kwacha. Pilot opening soon.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nexusticketing.online/">
-<meta property="og:site_name" content="Nexus Ticketing">
+<meta property="og:image" content="https://nexusticketing.online/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap">
 <style>
 /* Layout: dark hero with a tilted sample ticket and gate-scanner card, light story sections, a bento of features, dark closing band. */
+/* Brand: Nexus Ticketing brand kit v1.0. Navy #0A1628, blue #1A3C6E, cyan #00AACC, gold #E8A020, white, grey #F5F5F5.
+   Courier New Bold for display and labels, Arial for body. Courier Prime is the fallback where Courier New is missing (Android). */
 :root{
-  --bg:#f4f6fb; --surface:#ffffff; --ink:#0c1730; --muted:#4f5f7d; --line:#dbe2ee;
-  --brand:#1f4e8c; --accent:#7a4fd0; --ok:#12915a; --ok-bg:#dff4ea; --bad:#c9372c; --bad-bg:#fbe4e1;
-  --night:#0a1630; --night-2:#0f1f42; --night-ink:#eaf0fb; --night-muted:#9db0d0; --night-line:#233659;
-  --glow:#2f6fd6; --signal:#5de0a6; --ticket:#ffffff; --ticket-ink:#0c1730;
-  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif;
-  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --navy:#0A1628; --blue:#1A3C6E; --cyan:#00AACC; --gold:#E8A020; --grey:#F5F5F5;
+  --bg:#F5F5F5; --surface:#ffffff; --ink:#0A1628; --muted:#4a5870; --line:#dbe1ea;
+  --brand:#1A3C6E; --on-brand:#ffffff; --accent:#1A3C6E; --ok:#12915a; --ok-bg:#dff4ea; --bad:#c9372c; --bad-bg:#fbe4e1;
+  --night:#0A1628; --night-2:#10223E; --night-ink:#F5F5F5; --night-muted:#9fb0c8; --night-line:#22385c;
+  --glow:#1A3C6E; --signal:#00AACC; --go:#5de0a6; --ticket:#ffffff; --ticket-ink:#0A1628;
+  --display:"Courier New","Courier Prime",Courier,monospace;
+  --body:Arial,Helvetica,sans-serif;
+  --mono:"Courier New","Courier Prime",Courier,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#08101f; --surface:#0f1b33; --ink:#eaf0fb; --muted:#9db0d0; --line:#223455;
-  --brand:#79a9f2; --accent:#b99bf0; --ok:#5de0a6; --ok-bg:#103a2a; --bad:#ff9a92; --bad-bg:#3d171a;
-  --night:#050b17; --night-2:#0a1428; color-scheme:dark}}
+  --bg:#0A1628; --surface:#10223E; --ink:#F5F5F5; --muted:#9fb0c8; --line:#22385c;
+  --brand:#00AACC; --on-brand:#0A1628; --accent:#E8A020; --ok:#5de0a6; --ok-bg:#103a2a; --bad:#ff9a92; --bad-bg:#3d171a;
+  --night:#060d19; --night-2:#0c1a30; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#08101f; --surface:#0f1b33; --ink:#eaf0fb; --muted:#9db0d0; --line:#223455;
-  --brand:#79a9f2; --accent:#b99bf0; --ok:#5de0a6; --ok-bg:#103a2a; --bad:#ff9a92; --bad-bg:#3d171a;
-  --night:#050b17; --night-2:#0a1428; color-scheme:dark}
+  --bg:#0A1628; --surface:#10223E; --ink:#F5F5F5; --muted:#9fb0c8; --line:#22385c;
+  --brand:#00AACC; --on-brand:#0A1628; --accent:#E8A020; --ok:#5de0a6; --ok-bg:#103a2a; --bad:#ff9a92; --bad-bg:#3d171a;
+  --night:#060d19; --night-2:#0c1a30; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -42,86 +51,87 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .in{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3,p{margin:0}
 h1,h2,h3{font-family:var(--display);text-wrap:balance}
-h1{font-size:clamp(2.6rem,7.4vw,5rem);line-height:.98;font-weight:800;letter-spacing:-.03em}
-h2{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.04;font-weight:800;letter-spacing:-.02em}
-h3{font-size:1.25rem;line-height:1.2;font-weight:600;letter-spacing:-.01em}
-.eyebrow{font:500 .74rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(2.2rem,5.8vw,3.9rem);line-height:1.04;font-weight:700;letter-spacing:-.02em}
+h2{font-size:clamp(1.65rem,3.8vw,2.45rem);line-height:1.1;font-weight:700;letter-spacing:-.02em}
+h3{font-size:1.15rem;line-height:1.25;font-weight:700;letter-spacing:-.01em}
+.eyebrow{font:700 .74rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--gold)}
 .mono{font-family:var(--mono)}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
 
 /* nav */
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--night);color:var(--night-ink)}
 nav .in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
-.logo{display:flex;align-items:center;gap:10px;font:800 1.1rem var(--display);text-decoration:none}
-.logo i{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--brand);display:grid;place-items:center;font-style:normal;font-weight:800}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{display:block;height:40px;width:auto}
 .navlinks{display:flex;align-items:center;gap:22px;font-size:.95rem}
 .navlinks a{text-decoration:none;color:var(--night-muted)}
 .navlinks a:hover{color:#fff}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font:600 1rem var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font:700 1rem var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
 .btn:hover{transform:translateY(-1px)}
-.btn.signal{background:var(--signal);color:#04200f}
+.btn.signal{background:var(--gold);color:var(--navy)}
+.btn.signal:hover{background:#F6BE4A}
 .btn.line{border-color:var(--night-line);color:var(--night-ink);background:transparent}
 .btn.sm{padding:9px 16px;font-size:.92rem}
 
 /* hero */
 .hero{background:
-  radial-gradient(700px 420px at 82% 12%,rgba(47,111,214,.35),transparent 70%),
-  radial-gradient(500px 360px at 5% 90%,rgba(122,79,208,.22),transparent 70%),
+  radial-gradient(700px 420px at 82% 12%,rgba(26,60,110,.75),transparent 70%),
+  radial-gradient(500px 360px at 5% 90%,rgba(0,170,204,.14),transparent 70%),
   var(--night);
   color:var(--night-ink);position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px);background-size:22px 22px;mask-image:linear-gradient(to bottom,#000 30%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent);pointer-events:none}
 .hero .in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-block:64px 76px}
-.pill{display:inline-flex;align-items:center;gap:10px;font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal);border:1px solid rgba(93,224,166,.4);border-radius:999px;padding:8px 14px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(93,224,166,.6)}
+.pill{display:inline-flex;align-items:center;gap:10px;font:700 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,170,204,.5);border-radius:999px;padding:8px 14px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(0,170,204,.6)}
 .hero h1{margin-top:22px}
-.hero h1 em{font-style:normal;color:var(--signal)}
+.hero h1 em{font-style:normal;color:var(--gold)}
 .lead{font-size:1.18rem;color:var(--night-muted);margin-top:22px;max-width:32em}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .byline{margin-top:20px;font-size:.88rem;color:var(--night-muted)}
 
 /* ticket + scanner composition */
 .stage{position:relative;min-height:470px}
-.ticket{position:relative;width:min(100%,370px);background:var(--ticket);color:var(--ticket-ink);border-radius:22px;transform:rotate(-4deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);
-  -webkit-mask:radial-gradient(circle 13px at 0 258px,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 13px at 100% 258px,transparent 98%,#000) right/51% 100% no-repeat;
-          mask:radial-gradient(circle 13px at 0 258px,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 13px at 100% 258px,transparent 98%,#000) right/51% 100% no-repeat}
+.ticket{position:relative;width:min(100%,370px);background:var(--ticket);color:var(--ticket-ink);border-radius:22px;transform:rotate(-4deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);border-top:5px solid var(--gold)}
 .ticket-top{padding:22px 24px 22px;height:258px}
-.ticket-top .mono{font-size:.68rem;letter-spacing:.16em;color:#5a6b8c}
-.ticket-top h3{font-size:2rem;font-weight:800;letter-spacing:-.02em;margin-top:14px;line-height:1}
-.ticket-top .when{margin-top:8px;color:#3b4a6b;font-size:.95rem}
+.ticket-top .mono{font-size:.68rem;font-weight:700;letter-spacing:.16em;color:#4a5870;display:flex;align-items:center;gap:8px}
+.ticket-top .mono svg{flex:none;width:22px;height:22px}
+.ticket-top h3{font-size:1.75rem;font-weight:700;letter-spacing:-.02em;margin-top:14px;line-height:1}
+.ticket-top .when{margin-top:8px;color:#4a5870;font-size:.95rem}
 .facts{display:flex;gap:22px;margin-top:26px}
 .facts div{display:grid;gap:2px}
-.facts small{font:500 .62rem var(--mono);letter-spacing:.14em;color:#6b7b99}
-.facts b{font:800 1.3rem var(--display)}
-.perf{border-top:2px dashed #c5cee0;margin:0 14px}
+.facts small{font:700 .62rem var(--mono);letter-spacing:.14em;color:#5d6b82}
+.facts b{font:700 1.2rem var(--display)}
+.perf{border-top:2px dashed #c3ccda;margin:0 24px}
 .ticket-stub{display:flex;align-items:center;gap:18px;padding:22px 24px 26px}
-.ticket-stub svg{flex:none;width:96px;height:96px;color:#0c1730}
-.ticket-stub p{font:500 .64rem/1.5 var(--mono);letter-spacing:.1em;color:#6b7b99}
-.scanner{position:absolute;right:0;bottom:0;width:min(78%,290px);background:#101f3d;border:1px solid var(--night-line);border-radius:26px;padding:12px;transform:rotate(3deg);box-shadow:0 30px 60px -18px rgba(0,0,0,.7)}
-.scanner-top{background:var(--brand);border-radius:16px;padding:11px 14px;color:#fff}
-.scanner-top b{display:block;font:800 1rem var(--display)}
-.scanner-top span{font:500 .62rem var(--mono);letter-spacing:.12em;opacity:.85}
+.ticket-stub svg{flex:none;width:96px;height:96px;color:#0A1628}
+.ticket-stub p{font:700 .64rem/1.5 var(--mono);letter-spacing:.1em;color:#5d6b82}
+.scanner{position:absolute;right:0;bottom:0;width:min(78%,290px);background:#0c1a30;border:1px solid var(--night-line);border-radius:26px;padding:12px;transform:rotate(3deg);box-shadow:0 30px 60px -18px rgba(0,0,0,.7)}
+.scanner-top{background:#1A3C6E;border-radius:16px;padding:11px 14px;color:#fff}
+.scanner-top b{display:block;font:700 .95rem var(--display)}
+.scanner-top span{font:700 .62rem var(--mono);letter-spacing:.12em;opacity:.85}
 .lane{display:flex;gap:6px;margin:10px 0 8px}
 .lane span{flex:1;text-align:center;padding:6px;border-radius:999px;border:1px solid var(--night-line);font-size:.78rem;font-weight:600;color:var(--night-muted)}
-.lane span.on{background:#12382a;border-color:var(--signal);color:var(--signal)}
+.lane span.on{background:#12382a;border-color:var(--go);color:var(--go)}
 .res{display:flex;gap:10px;align-items:center;border-radius:12px;padding:10px 12px;margin-top:8px}
-.res.ok{background:#0f3a29;color:var(--signal)}
+.res.ok{background:#0f3a29;color:var(--go)}
 .res.bad{background:#40181b;color:#ff9a92}
 .res svg{flex:none}
 .res b{display:block;font-size:.95rem}
-.res small{font:500 .6rem var(--mono);letter-spacing:.06em;opacity:.85}
-.off{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--night-line);font:500 .6rem var(--mono);letter-spacing:.08em;color:var(--night-muted)}
-.sample{position:absolute;left:0;bottom:-6px;font:500 .64rem var(--mono);letter-spacing:.14em;color:var(--night-muted);text-transform:uppercase}
+.res small{font:700 .6rem var(--mono);letter-spacing:.06em;opacity:.85}
+.off{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--night-line);font:700 .6rem var(--mono);letter-spacing:.08em;color:var(--night-muted)}
+.sample{position:absolute;left:0;bottom:-6px;font:700 .64rem var(--mono);letter-spacing:.14em;color:var(--night-muted);text-transform:uppercase}
 
 /* ribbon */
 .ribbon{background:var(--night-2);color:var(--night-muted);border-top:1px solid var(--night-line)}
-.ribbon .in{display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:space-between;padding-block:18px;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase}
-.ribbon span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);margin-right:10px}
+.ribbon .in{display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:space-between;padding-block:18px;font:700 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.ribbon span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cyan);margin-right:10px}
 
 section{padding-block:88px}
 .kinds{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
 .kind{border:1.5px solid var(--line);background:var(--surface);border-radius:18px;padding:20px;min-width:0}
-.kind b{display:block;font:500 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.kind b{display:block;font:700 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 .kind p{font-size:.95rem;color:var(--muted)}
 .head{max-width:40rem}
 .head p{margin-top:16px;color:var(--muted);font-size:1.08rem}
@@ -133,14 +143,14 @@ section{padding-block:88px}
 .prob svg{width:48px;height:48px;color:var(--brand)}
 .prob p{color:var(--muted)}
 .fix{margin-top:auto;padding-top:16px;border-top:1.5px dashed var(--line);font-size:.95rem}
-.fix b{font:500 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ok);display:block;margin-bottom:4px}
+.fix b{font:700 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ok);display:block;margin-bottom:4px}
 
 /* timeline */
 .line3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;position:relative}
 .line3::before{content:"";position:absolute;left:24px;right:24px;top:23px;border-top:2px dashed var(--line)}
 .st{position:relative;min-width:0}
-.st .n{width:48px;height:48px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font:800 1.1rem var(--display);position:relative;box-shadow:0 0 0 8px var(--bg)}
-.st .when{margin-top:18px;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.st .n{width:48px;height:48px;border-radius:50%;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;font:700 1.1rem var(--display);position:relative;box-shadow:0 0 0 8px var(--bg)}
+.st .when{margin-top:18px;font:700 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .st h3{margin-top:8px}
 .st p{margin-top:8px;color:var(--muted)}
 
@@ -153,24 +163,24 @@ section{padding-block:88px}
 .b.dark{background:var(--night);border-color:var(--night-line);color:var(--night-ink)}
 .b.dark p{color:var(--night-muted)}
 .sync{display:flex;align-items:center;gap:10px}
-.node{flex:none;width:52px;height:52px;border-radius:14px;border:1.5px solid var(--night-line);display:grid;place-items:center;color:var(--signal);background:var(--night-2)}
+.node{flex:none;width:52px;height:52px;border-radius:14px;border:1.5px solid var(--night-line);display:grid;place-items:center;color:var(--cyan);background:var(--night-2)}
 .wire{flex:1;border-top:2px dashed var(--night-line);position:relative;min-width:30px}
-.wire::after{content:"";position:absolute;top:-5px;left:0;width:8px;height:8px;border-radius:50%;background:var(--signal)}
-.cap{font:500 .64rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--night-muted);margin-top:10px}
+.wire::after{content:"";position:absolute;top:-5px;left:0;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.cap{font:700 .64rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--night-muted);margin-top:10px}
 .toggle{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:4px;gap:4px}
-.toggle span{padding:8px 18px;border-radius:999px;font-weight:600;font-size:.92rem;color:var(--muted)}
+.toggle span{padding:8px 18px;border-radius:999px;font-weight:700;font-size:.92rem;color:var(--muted)}
 .toggle span.on{background:var(--ok-bg);color:var(--ok)}
-.tree{display:grid;gap:8px;font:500 .78rem var(--mono);color:var(--muted)}
+.tree{display:grid;gap:8px;font:700 .78rem var(--mono);color:var(--muted)}
 .tree div{display:flex;align-items:center;gap:8px}
 .tree i{width:10px;height:10px;border-radius:3px;background:var(--brand);flex:none}
-.tree .kid{padding-left:22px}.tree .kid i{background:var(--accent)}
-.log{font:500 .7rem/1.9 var(--mono);color:var(--night-muted);margin:0;padding:0;list-style:none}
-.log b{color:var(--signal);font-weight:500}
+.tree .kid{padding-left:22px}.tree .kid i{background:var(--gold)}
+.log{font:700 .7rem/1.9 var(--mono);color:var(--night-muted);margin:0;padding:0;list-style:none}
+.log b{color:var(--cyan);font-weight:700}
 .bars{display:flex;align-items:flex-end;gap:7px;height:64px}
 .bars i{flex:1;background:var(--brand);border-radius:5px 5px 0 0;opacity:.9}
-.bars i:nth-child(even){background:var(--accent)}
+.bars i:nth-child(even){background:var(--gold)}
 .tbl{width:100%;border-collapse:collapse;font-size:.92rem}
-.tbl th{font:500 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line)}
+.tbl th{font:700 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line)}
 .tbl td{padding:10px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
 .tbl td:last-child,.tbl th:last-child{text-align:right}
 .tbl .gap{color:var(--bad);font-weight:600}
@@ -178,13 +188,13 @@ section{padding-block:88px}
 
 /* closing */
 .close{background:
-  radial-gradient(600px 380px at 85% 0%,rgba(47,111,214,.35),transparent 70%),
+  radial-gradient(600px 380px at 85% 0%,rgba(26,60,110,.75),transparent 70%),
   var(--night);color:var(--night-ink);position:relative;overflow:hidden}
 .close .in{padding-block:92px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
 .close p{color:var(--night-muted);margin-top:18px;font-size:1.1rem;max-width:30em}
 .mailbox{background:var(--night-2);border:1px solid var(--night-line);border-radius:22px;padding:26px;display:grid;gap:14px}
-.mailbox small{font:500 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--night-muted)}
-.mailbox code{display:block;font:500 1rem var(--mono);overflow-wrap:anywhere;color:#fff;background:var(--night);border:1px solid var(--night-line);border-radius:12px;padding:14px}
+.mailbox small{font:700 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--night-muted)}
+.mailbox code{display:block;font:700 1rem var(--mono);overflow-wrap:anywhere;color:#fff;background:var(--night);border:1px solid var(--night-line);border-radius:12px;padding:14px}
 .mailbox ul{margin:0;padding-left:1.2em;color:var(--night-muted);font-size:.95rem}
 .mailbox li{margin-bottom:4px}
 
@@ -205,7 +215,7 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
 @media (max-width:420px){.ticket{transform:rotate(-2deg)}.scanner{transform:rotate(2deg);width:84%}}
 @media (prefers-reduced-motion:no-preference){
   .dot{animation:ping 2s infinite}
-  @keyframes ping{70%{box-shadow:0 0 0 9px rgba(93,224,166,0)}100%{box-shadow:0 0 0 0 rgba(93,224,166,0)}}
+  @keyframes ping{70%{box-shadow:0 0 0 9px rgba(0,170,204,0)}100%{box-shadow:0 0 0 0 rgba(0,170,204,0)}}
   .ticket{animation:in1 .7s ease both}.scanner{animation:in2 .7s .15s ease both}
   @keyframes in1{from{opacity:0;transform:translateY(14px) rotate(-4deg)}}
   @keyframes in2{from{opacity:0;transform:translateY(14px) rotate(3deg)}}
@@ -216,10 +226,10 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
 <body>
 <nav>
   <div class="in">
-    <a class="logo" href="#top"><i>N</i> Nexus Ticketing</a>
+    <a class="logo" href="#top"><img src="/brand/logo-dark.svg" width="162" height="40" alt="Nexus Ticketing"></a>
     <div class="navlinks">
       <a href="#problems">Why</a><a href="#how">How it works</a><a href="#product">Product</a>
-      <a class="btn signal sm" href="#pilot">Enquire</a>
+      <a class="btn signal sm" href="#pilot">Pre-register</a>
     </div>
   </div>
 </nav>
@@ -231,7 +241,7 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
       <h1>Sell the tickets. Scan the gate. <em>Count every kwacha.</em></h1>
       <p class="lead">Nexus Ticketing sells tickets for any kind of event, then checks them at the door on phones that keep working when the network drops. Every sale and every scan lands in one report the next morning.</p>
       <div class="cta">
-        <a class="btn signal" href="#pilot">Enquire about the pilot</a>
+        <a class="btn signal" href="#pilot">Pre-register for the pilot</a>
         <a class="btn line" href="#how">See how it works</a>
       </div>
       <p class="byline">Built in Lusaka by Nexus Digital Solutions.</p>
@@ -240,7 +250,7 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
     <div class="stage" role="img" aria-label="A sample ticket with a QR code, and a gate scanner showing one ticket admitted and one refused as already used">
       <div class="ticket">
         <div class="ticket-top">
-          <div class="mono">NEXUS TICKETING · SAMPLE</div>
+          <div class="mono"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#E8A020"/><path d="M34 39 H66 V47 A3.4 3.4 0 0 0 66 53 V61 H34 V53 A3.4 3.4 0 0 0 34 47 Z" fill="#0A1628" transform="translate(50 50) scale(1.3) translate(-50 -50)"/></svg>NEXUS TICKETING · SAMPLE</div>
           <h3>Summer Live 2026</h3>
           <div class="when">Saturday 24 October · Lusaka</div>
           <div class="facts">
@@ -385,9 +395,9 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
   <div class="in">
     <div>
       <span class="pill"><i class="dot"></i> Pilot opening soon</span>
-      <h2 style="margin-top:22px">Talk to us about the pilot.</h2>
-      <p>Send us a short email with your name, your organisation, the event and the crowd you expect. We will reply to talk through next steps.</p>
-      <div class="cta"><a class="btn signal" id="mailto" href="mailto:hello@nexusticketing.online?subject=Pilot%20enquiry">Email us to enquire</a></div>
+      <h2 style="margin-top:22px">Be first in line for the pilot.</h2>
+      <p>Send us a short email with your name, your organisation, the event and the crowd you expect. We will reply as soon as pilot places open.</p>
+      <div class="cta"><a class="btn signal" id="mailto" href="mailto:hello@nexusticketing.online?subject=Pilot%20pre-registration">Email us to pre-register</a></div>
     </div>
     <div class="mailbox">
       <small>Our email</small>
