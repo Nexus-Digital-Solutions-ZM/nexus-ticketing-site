@@ -13,7 +13,8 @@ No build step: `index.html` is the page; the brand files sit beside it.
 ## Edit
 
 - Text and layout: `index.html`
-- Contact address: search for `nexusdigitalsolutions.zm@gmail.com` (two places, plus the mailto link)
+- Contact address: search for `hello@nexusticketing.online` (the mailbox, the mailto links and the enquiry form's error message)
+- Enquiry pop-up: the `<dialog id="enquiry">` in `index.html`. Web3Forms (free, 250 a month) emails each submission to hello@, which forwards to the team. The access key is in a hidden field; a new key from web3forms.com replaces it.
 - Search and sharing details: the `<meta>` tags at the top of `index.html`
 
 ## Rules for this site

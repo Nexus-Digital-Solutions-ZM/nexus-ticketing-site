@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Nexus Ticketing</title>
-<meta name="description" content="Nexus Ticketing sells tickets for any kind of event and checks them at the door on phones that keep working offline. Pilot opening soon in Zambia. Enquire by email.">
+<meta name="description" content="Nexus Ticketing sells tickets for any kind of event and checks them at the door on phones that keep working offline. Pilot opening soon in Zambia. Enquire online.">
 <meta name="theme-color" content="#0A1628">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -199,6 +199,25 @@ section{padding-block:88px}
 .mailbox ul{margin:0;padding-left:1.2em;color:var(--night-muted);font-size:.95rem}
 .mailbox li{margin-bottom:4px}
 
+/* pilot enquiry pop-up: native <dialog>, so Esc closes it and focus stays inside while open */
+dialog.enq{width:min(560px,calc(100% - 32px));max-height:calc(100% - 32px);padding:0;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:var(--ink);box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+dialog.enq::backdrop{background:rgba(6,13,25,.72)}
+.enq form{padding:26px;display:grid;gap:14px}
+.enq .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.enq .top p{color:var(--muted);margin-top:6px}
+.enq .x{background:none;border:0;color:var(--muted);font:1.7rem/1 var(--body);cursor:pointer;padding:2px 8px}
+.enq .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.enq label{display:grid;gap:6px;font:700 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+/* 16px inputs stop iPhone Safari zooming in on focus */
+.enq input,.enq textarea{width:100%;font:16px/1.4 var(--body);letter-spacing:normal;text-transform:none;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px}
+.enq textarea{min-height:90px;resize:vertical}
+.enq .fine{font-size:.85rem;color:var(--muted)}
+.enq .note{font-size:.95rem;border-radius:12px;padding:12px 14px}
+.enq .note.ok{background:var(--ok-bg);color:var(--ok)}
+.enq .note.bad{background:var(--bad-bg);color:var(--bad)}
+.enq .trap{position:absolute;left:-9999px}
+@media (max-width:560px){.enq .row{grid-template-columns:1fr}.enq form{padding:20px}}
+
 footer{background:var(--night);color:var(--night-muted);border-top:1px solid var(--night-line);font-size:.9rem}
 footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;padding-block:26px calc(30px + env(safe-area-inset-bottom,0px))}
 
@@ -230,7 +249,7 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
     <a class="logo" href="#top"><img src="/brand/logo-dark.svg" width="162" height="40" alt="Nexus Ticketing"></a>
     <div class="navlinks">
       <a href="#problems">Why</a><a href="#how">How it works</a><a href="#product">Product</a>
-      <a class="btn signal sm" href="#pilot">Enquire</a>
+      <a class="btn signal sm" href="#pilot" data-enquire>Enquire</a>
     </div>
   </div>
 </nav>
@@ -242,7 +261,7 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
       <h1>Sell the tickets. Scan the gate. <em>Count every kwacha.</em></h1>
       <p class="lead">Nexus Ticketing sells tickets for any kind of event, then checks them at the door on phones that keep working when the network drops. Every sale and every scan lands in one report the next morning.</p>
       <div class="cta">
-        <a class="btn signal" href="#pilot">Enquire about the pilot</a>
+        <a class="btn signal" href="#pilot" data-enquire>Enquire about the pilot</a>
         <a class="btn line" href="#how">See how it works</a>
       </div>
       <p class="byline">Built in Lusaka by Nexus Digital Solutions.</p>
@@ -397,11 +416,11 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
     <div>
       <span class="pill"><i class="dot"></i> Pilot opening soon</span>
       <h2 style="margin-top:22px">Talk to us about the pilot.</h2>
-      <p>Send us a short email with your name, your organisation, the event and the crowd you expect. We will reply to talk through next steps.</p>
-      <div class="cta"><a class="btn signal" id="mailto" href="mailto:hello@nexusticketing.online?subject=Pilot%20enquiry">Email us to enquire</a></div>
+      <p>Tell us your name, your organisation, the event and the crowd you expect. We will reply to talk through next steps.</p>
+      <div class="cta"><a class="btn signal" id="mailto" href="mailto:hello@nexusticketing.online?subject=Pilot%20enquiry" data-enquire>Send an enquiry</a></div>
     </div>
     <div class="mailbox">
-      <small>Our email</small>
+      <small>Or email us</small>
       <code id="addr">hello@nexusticketing.online</code>
       <button class="btn line sm" id="copy" type="button" style="justify-self:start">Copy address</button>
       <small>Please include</small>
@@ -409,6 +428,43 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
     </div>
   </div>
 </section>
+
+<!-- Pilot enquiry pop-up. Web3Forms emails each submission to hello@, which Namecheap forwards to the team inbox.
+     The access key is public by design: it can only send to hello@, nowhere else. -->
+<dialog class="enq" id="enquiry" aria-labelledby="enq-title">
+  <form id="enquiry-form">
+    <div class="top">
+      <div>
+        <h3 id="enq-title">Pilot enquiry</h3>
+        <p>Tell us about your event and we will reply to talk through next steps.</p>
+      </div>
+      <button class="x" type="button" id="enquiry-close" aria-label="Close">×</button>
+    </div>
+    <input type="hidden" name="access_key" value="0dc1412e-d2fe-4367-82f8-22eee6c2ba4e">
+    <input type="hidden" name="from_name" value="Nexus Ticketing website">
+    <input class="trap" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="row">
+      <label>Your name<input name="name" required autocomplete="name"></label>
+      <label>Organisation<input name="organisation" required autocomplete="organization"></label>
+    </div>
+    <div class="row">
+      <label>Email<input type="email" name="email" autocomplete="email"></label>
+      <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
+    </div>
+    <div class="row">
+      <label>Event<input name="event"></label>
+      <label>Event date<input name="event_date" placeholder="e.g. 14 March 2027"></label>
+    </div>
+    <div class="row">
+      <label>Venue<input name="venue"></label>
+      <label>Expected crowd<input name="expected_crowd" inputmode="numeric" placeholder="e.g. 5,000"></label>
+    </div>
+    <label>Anything else<textarea name="message"></textarea></label>
+    <p class="fine">Name, organisation and an email or phone number are required. We use these details only to reply to your enquiry.</p>
+    <p class="note" id="enquiry-note" role="status" hidden></p>
+    <button class="btn signal" type="submit" id="enquiry-send" style="justify-self:start">Send enquiry</button>
+  </form>
+</dialog>
 
 <footer>
   <div class="in">
@@ -431,6 +487,42 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
   if(copy)copy.addEventListener('click',function(){
     function sel(){var r=document.createRange();r.selectNodeContents(addr);var g=getSelection();g.removeAllRanges();g.addRange(r);copy.textContent='Selected'}
     try{navigator.clipboard.writeText(addr.textContent).then(function(){copy.textContent='Copied'},sel)}catch(e){sel()}
+  });
+
+  /* Enquire buttons open the pop-up. Without <dialog> support the links keep their old jump/mailto behaviour. */
+  var dlg=document.getElementById('enquiry'),form=document.getElementById('enquiry-form'),
+      note=document.getElementById('enquiry-note'),send=document.getElementById('enquiry-send');
+  if(!dlg||!dlg.showModal)return;
+  function say(cls,html){note.className='note '+cls;note.innerHTML=html;note.hidden=false}
+  [].forEach.call(document.querySelectorAll('[data-enquire]'),function(a){
+    a.addEventListener('click',function(e){e.preventDefault();note.hidden=true;dlg.showModal()});
+  });
+  document.getElementById('enquiry-close').addEventListener('click',function(){dlg.close()});
+  form.email.addEventListener('input',function(){form.email.setCustomValidity('')});
+  form.phone.addEventListener('input',function(){form.email.setCustomValidity('')});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    // We need some way to reply, but either one is enough.
+    if(!form.email.value.trim()&&!form.phone.value.trim()){
+      form.email.setCustomValidity('Add an email or a phone number so we can reply.');
+      form.reportValidity();return;
+    }
+    // Plain form data, not JSON: a JSON body triggers a CORS preflight that Web3Forms rejects.
+    var data=new FormData(form);
+    data.append('subject','Pilot enquiry: '+form.organisation.value.trim());
+    send.disabled=true;send.textContent='Sending…';note.hidden=true;
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{Accept:'application/json'},body:data})
+      .then(function(r){return r.json()})
+      .then(function(res){
+        if(!res.success)throw new Error(res.message);
+        form.reset();
+        say('ok','Thank you. Your enquiry has been sent and we will be in touch soon.');
+      })
+      .catch(function(){
+        // Keep what they typed so they can retry, and give them the address so the lead is not lost.
+        say('bad','Sorry, the enquiry did not send. Please try again, or email <a href="mailto:hello@nexusticketing.online?subject=Pilot%20enquiry">hello@nexusticketing.online</a>.');
+      })
+      .then(function(){send.disabled=false;send.textContent='Send enquiry'});
   });
 })();
 </script>
