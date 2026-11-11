@@ -429,8 +429,8 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
   </div>
 </section>
 
-<!-- Pilot enquiry pop-up. Web3Forms emails each submission to hello@, which Namecheap forwards to the team inbox.
-     The access key is public by design: it can only send to hello@, nowhere else. -->
+<!-- Pilot enquiry pop-up. Web3Forms emails each submission straight to the recipient set in the Web3Forms form settings,
+     not via the hello@ forward (forwarded form mail went missing). The access key is public by design: it only sends there. -->
 <dialog class="enq" id="enquiry" aria-labelledby="enq-title">
   <form id="enquiry-form">
     <div class="top">
@@ -440,7 +440,7 @@ footer .in{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-betwee
       </div>
       <button class="x" type="button" id="enquiry-close" aria-label="Close">×</button>
     </div>
-    <input type="hidden" name="access_key" value="0dc1412e-d2fe-4367-82f8-22eee6c2ba4e">
+    <input type="hidden" name="access_key" value="ec6c3da2-f6fe-40ac-8a2a-c5b65d734404">
     <input type="hidden" name="from_name" value="Nexus Ticketing website">
     <input class="trap" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="row">
