@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/events", "destination": "https://app.nexusticketing.online/v1/public/events" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
