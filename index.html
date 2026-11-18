@@ -584,7 +584,8 @@ footer a:hover{color:#fff}
 
 <script>
 /* Upcoming events: the next five public events from the shop, through vercel.json's /api/events rewrite (the
-   API only allows its own origin, so the browser can't call it from here directly). Each card opens the shop
+   API only allows its own origin, so the browser can't call it from here directly), invite-only ones included
+   and labelled. Each card opens the shop
    with that event highlighted (?e=organiser/event) and scrolled to (#e-organiser-event). */
 (function(){
   var sec=document.getElementById('upcoming'),row=document.getElementById('ev-row');
@@ -602,8 +603,8 @@ footer a:hover{color:#fff}
     .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
     .then(function(list){
       var now=Date.now();
-      // Public events only (invite-only ones can't be bought), by their next day still to come.
-      var next=(list||[]).filter(function(e){return e.ticketing_mode!=='invite_only'}).map(function(e){
+      // Every kind of event, invite-only too, by its next day still to come.
+      var next=(list||[]).map(function(e){
         var t=(e.days||[]).map(function(d){return Date.parse(d.starts_at)}).filter(function(t){return t>now}).sort(function(a,b){return a-b})[0];
         return {e:e,t:t};
       }).filter(function(x){return x.t}).sort(function(a,b){return a.t-b.t}).slice(0,5);
@@ -621,7 +622,7 @@ footer a:hover{color:#fff}
           +'<span class="meta">'+esc(fmt(x.t,{weekday:'short',day:'numeric',month:'short'}))+' · '+esc(fmt(x.t,{hour:'2-digit',minute:'2-digit'}))+'</span>'
           +'<span class="meta">'+esc([e.venue,e.city].filter(Boolean).join(', '))+'</span>'
           +'<span class="meta">'+esc(o.name)+'</span>'
-          +'<span class="go">'+esc(price(e))+' · Get tickets &#8250;</span></span></a></li>';
+          +'<span class="go">'+(e.ticketing_mode==='invite_only'?'Invite only · Details':esc(price(e))+' · Get tickets')+' &#8250;</span></span></a></li>';
       }).join('');
       sec.hidden=false;
       [].forEach.call(sec.querySelectorAll('.arrows button'),function(b){
