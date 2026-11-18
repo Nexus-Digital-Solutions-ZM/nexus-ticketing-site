@@ -625,6 +625,10 @@ footer a:hover{color:#fff}
           +'<span class="go">'+(e.ticketing_mode==='invite_only'?'Invite only · Details':esc(price(e))+' · Get tickets')+' &#8250;</span></span></a></li>';
       }).join('');
       sec.hidden=false;
+      // Arrows only when the cards overflow the row ('' hands back to the CSS, which hides them on phones).
+      var arrows=sec.querySelector('.arrows');
+      function fit(){arrows.style.display=row.scrollWidth>row.clientWidth+1?'':'none'}
+      fit();addEventListener('resize',fit);
       [].forEach.call(sec.querySelectorAll('.arrows button'),function(b){
         b.addEventListener('click',function(){row.scrollBy({left:+b.getAttribute('data-dir')*row.clientWidth*0.8,behavior:'smooth'})});
       });
